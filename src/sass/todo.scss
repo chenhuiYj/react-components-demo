@@ -1,0 +1,45 @@
+.m-todo{
+  width: 300px;
+  margin: 30px auto;
+  li{
+    font-size: 14px;
+    line-height: 30px;
+    margin-bottom: 10px;
+  }
+}
+.u-todo-input{
+  width: 300px;
+  height: 30px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+.u-input-update{
+  width: 200px;
+  height: 30px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+.u-icon-status{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  vertical-align: top;
+  background: #ccc;
+  cursor: pointer;
+  &.yes,&:hover{
+    background: #52ad52;
+  }
+}
+.u-icon-delete{
+  float: right;
+  cursor: pointer;
+  color: #f00;
+  &:hover{
+    opacity: .8;
+  }
+}
