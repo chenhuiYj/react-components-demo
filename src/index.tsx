@@ -6,7 +6,7 @@ import { HashRouter,Route,Link,Redirect } from 'react-router-dom'
 // import SideBar from '@components/SideBar/sideBar'
 import comment from '@pages/comment/comment'
 import todo from '@pages/todo/todo'
-import shoppingCard from '@pages/shoppingCard/shoppingCard'
+import shoppingCart from '@pages/shoppingCart/shoppingCart'
 import common from './store/common'
 
 // const TestDemo = (props: any) => <>{props.children}</>
@@ -27,9 +27,9 @@ class Index extends Component<any,any>{
           component:comment
         },
         {
-          router:'/shoppingCard',
+          router:'/shoppingCart',
           label:'购物车',
-          component:shoppingCard
+          component:shoppingCart
         }
       ]
     }
@@ -58,7 +58,7 @@ class Index extends Component<any,any>{
           <div className='m-content'>
             {/* <Route path='/comment' component={comment}/>
             <Route path='/todo' component={todo}/>
-            <Route path='/shoppingCard' component={shoppingCard}/> */}
+            <Route path='/shoppingCart' component={shoppingCart}/> */}
             {
               this.state.routerList.map((item:any)=><Route key={item.router} path={item.router} component={item.component}/>)
             }
@@ -90,12 +90,12 @@ ReactDOM.render(
 //           <div className='m-sidebar'>
 //             <Link to='/comment'>评论列表</Link>
 //             <Link to='/todo'>todoList</Link>
-//             <Link to='/shoppingCard'>购物车</Link>
+//             <Link to='/shoppingCart'>购物车</Link>
 //           </div>
 //           <div className='m-content'>
 //             <Route path='/comment' component={comment}/>
 //             <Route path='/todo' component={todo}/>
-//             <Route path='/shoppingCard' component={shoppingCard}/>
+//             <Route path='/shoppingCart' component={shoppingCart}/>
 //           </div>   
 //         </div>
 //       </HashRouter>
