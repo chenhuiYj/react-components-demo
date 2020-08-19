@@ -10,7 +10,6 @@ class Comment extends Component<any> {
         super(props);
     }
     componentDidMount(){
-        debugger
         common.setPath(this.props.location.pathname)
     }
     render() {

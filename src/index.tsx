@@ -8,13 +8,14 @@ import comment from '@pages/comment/comment'
 import todo from '@pages/todo/todo'
 import shoppingCart from '@pages/shoppingCart/shoppingCart'
 import common from './store/common'
+import {observer} from 'mobx-react'
 
 // const TestDemo = (props: any) => <>{props.children}</>
+@observer
 class Index extends Component<any,any>{
   constructor(props:any) {
     super(props)
     this.state={
-      nowRoutePath:'123',
       routerList:[
         {
           router:'/todo',
@@ -34,12 +35,9 @@ class Index extends Component<any,any>{
       ]
     }
   }
-  componentDidMount(){
-    this.setState({nowRoutePath:common.nowPath})
-  }
 
   switchRouter(path:any){
-    this.setState({nowRoutePath:path})
+    common.setPath(path)
   }
 
   render(){
@@ -48,7 +46,7 @@ class Index extends Component<any,any>{
           <div className='m-main'>
             <div className='m-sidebar'>
               {
-                this.state.routerList.map((item:any)=><Link key={item.router} to={item.router} className={this.state.nowRoutePath===item.router?'cur':''} onClick={()=>{this.switchRouter(item.router)}}>{item.label}</Link>)
+                this.state.routerList.map((item:any)=><Link key={item.router} to={item.router} className={common.nowPath===item.router?'cur':''} onClick={()=>{this.switchRouter(item.router)}}>{item.label}</Link>)
               }
             </div>
           <div className='m-content'>
