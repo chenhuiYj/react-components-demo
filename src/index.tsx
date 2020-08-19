@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.scss'
 // import Test from '@components/Test/test'
-import { HashRouter,Route,Link,Redirect } from 'react-router-dom'
+import { HashRouter,Route,Link,Redirect,Switch } from 'react-router-dom'
 // import SideBar from '@components/SideBar/sideBar'
 import comment from '@pages/comment/comment'
 import todo from '@pages/todo/todo'
@@ -35,10 +35,6 @@ class Index extends Component<any,any>{
     }
   }
   componentDidMount(){
-    // debugger
-  //   this.props.history.listen((route:any) => {
-  //     console.log(route)
-  // })
     this.setState({nowRoutePath:common.nowPath})
   }
 
@@ -49,20 +45,22 @@ class Index extends Component<any,any>{
   render(){
     return [
       <HashRouter key='3'>
-        <div className='m-main'>
-          <div className='m-sidebar'>
-            {
-              this.state.routerList.map((item:any)=><Link key={item.router} to={item.router} className={this.state.nowRoutePath===item.router?'cur':''} onClick={()=>{this.switchRouter(item.router)}}>{item.label}</Link>)
-            }
-          </div>
+          <div className='m-main'>
+            <div className='m-sidebar'>
+              {
+                this.state.routerList.map((item:any)=><Link key={item.router} to={item.router} className={this.state.nowRoutePath===item.router?'cur':''} onClick={()=>{this.switchRouter(item.router)}}>{item.label}</Link>)
+              }
+            </div>
           <div className='m-content'>
-            {/* <Route path='/comment' component={comment}/>
-            <Route path='/todo' component={todo}/>
-            <Route path='/shoppingCart' component={shoppingCart}/> */}
-            {
-              this.state.routerList.map((item:any)=><Route key={item.router} path={item.router} component={item.component}/>)
-            }
-            <Redirect from="/" to="/todo" />
+              {/* <Route path='/comment' component={comment}/>
+              <Route path='/todo' component={todo}/>
+              <Route path='/shoppingCart' component={shoppingCart}/> */}
+              <Switch>
+                {
+                  this.state.routerList.map((item:any)=><Route exact key={item.router} path={item.router} component={item.component}/>)
+                }
+                <Redirect exact from="/" to="/todo" />
+              </Switch>
           </div>   
         </div>
       </HashRouter>

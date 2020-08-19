@@ -4,21 +4,15 @@ import common from '../../store/common'
 import './../../sass/reset.scss'
 import './../../sass/todo.scss'
 
-// interface ITodoListProps {
-//     isAddToDo:boolean,
-//     id:number,
-//     updateIndex: number|string,
-//     updateInput: number|string,
-//     todoList: any[]
-// }
-
-const ToDoList: React.FC = props => {
-
+const ToDoList: React.FC = (props:any) => {
     const [todoList, setTodoList] = React.useState<any[]>([])
     const [updateIndex, setUpdateIndex] = React.useState(0)
     const [updateInput, setUpdateInput] = React.useState('')
-    
 
+    React.useLayoutEffect(()=>{
+        common.setPath(props.location.pathname)
+    })
+    
     function addTodo(e:any){
         if(e.keyCode!==13){
            return;
